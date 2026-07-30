@@ -3,92 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keto Económico & Familiar | Recetario y Plan Semanal</title>
+    <title>Keto Económico & Familiar | Recetario Orgánico Latino</title>
     <style>
         :root {
-            --primary: #2F4F4F;
-            --secondary: #556B2F;
-            --accent: #E97451;
-            --bg-color: #F8F9FA;
-            --card-bg: #FFFFFF;
-            --text-color: #333333;
-            --text-light: #666666;
-            --border-color: #E0E0E0;
+            --primary: #1D6A73; /* Turquesa/Verde profundo latino */
+            --secondary: #D96B43; /* Terracotta cálido */
+            --accent: #C73E5D; /* Magenta/Coral vivo */
+            --mustard: #E8A838; /* Amarillo sol */
+            --bg-color: #F4EFEB; /* Crema analógica */
+            --card-bg: #FAF7F2; /* Marfil texturizado */
+            --text-color: #2F2E2D; /* Gris oscuro elegante */
+            --border-color: #E2DBD0;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         }
 
         body {
             background-color: var(--bg-color);
             color: var(--text-color);
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            background: linear-gradient(135deg, #1D6A73, #2B4135);
+            color: #FAF7F2;
             text-align: center;
-            padding: 3rem 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 3.5rem 1rem;
+            border-bottom: 4px solid var(--secondary);
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+            font-weight: 700;
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             opacity: 0.9;
+            font-weight: 300;
         }
 
         .container {
             max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1rem;
+            margin: 2.5rem auto;
+            padding: 0 1.5rem;
         }
 
         .intro-card {
             background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-            border-left: 5px solid var(--accent);
+            padding: 2.2rem;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(47,46,45,0.04);
+            margin-bottom: 2.5rem;
+            border: 2px solid var(--text-color);
+            position: relative;
         }
 
         .intro-card h2 {
             color: var(--primary);
             margin-bottom: 1rem;
+            font-size: 1.5rem;
         }
 
         .nav-tabs {
             display: flex;
             justify-content: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 1.2rem;
+            margin-bottom: 2.5rem;
             flex-wrap: wrap;
         }
 
         .tab-btn {
             background: var(--card-bg);
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            padding: 0.75rem 1.5rem;
-            border-radius: 30px;
+            border: 2px solid var(--text-color);
+            color: var(--text-color);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
             cursor: pointer;
-            font-weight: bold;
-            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.25s ease;
+            box-shadow: 2px 2px 0px var(--text-color);
         }
 
         .tab-btn.active, .tab-btn:hover {
             background: var(--primary);
-            color: white;
+            color: #FAF7F2;
+            border-color: var(--primary);
+            box-shadow: 2px 2px 0px var(--primary);
         }
 
         .section-content {
@@ -101,67 +110,71 @@
 
         .day-card {
             background: var(--card-bg);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            padding: 1.8rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 4px 10px rgba(47,46,45,0.03);
+            border: 2px solid var(--text-color);
         }
 
         .day-card h3 {
             color: var(--secondary);
             border-bottom: 2px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
+            padding-bottom: 0.6rem;
+            margin-bottom: 1.2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            font-size: 1.3rem;
         }
 
         .meal-item {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.9rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            border-bottom: 1px dashed #eee;
-            padding-bottom: 0.5rem;
+            gap: 0.8rem;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 0.7rem;
         }
 
         .meal-info {
             flex: 1;
-            min-width: 250px;
+            min-width: 260px;
         }
 
         .meal-type {
-            font-weight: bold;
+            font-weight: 700;
             color: var(--primary);
         }
 
         .recipe-btn {
             background-color: var(--secondary);
-            color: white;
-            border: none;
-            padding: 0.4rem 0.8rem;
+            color: #FAF7F2;
+            border: 2px solid var(--text-color);
+            padding: 0.5rem 1rem;
             border-radius: 4px;
             cursor: pointer;
             font-size: 0.85rem;
-            transition: background 0.2s;
+            font-weight: 600;
+            box-shadow: 2px 2px 0px var(--text-color);
+            transition: all 0.2s;
         }
 
         .recipe-btn:hover {
-            background-color: var(--primary);
+            background-color: var(--accent);
+            transform: translateY(-1px);
         }
 
         .tip-box {
-            background: #F0F4F4;
-            padding: 0.75rem 1rem;
+            background: #EDE6DC;
+            padding: 1rem 1.2rem;
             border-radius: 4px;
-            margin-top: 1rem;
+            margin-top: 1.2rem;
             font-size: 0.95rem;
-            color: var(--primary);
-            border-left: 3px solid var(--secondary);
+            color: var(--text-color);
+            border-left: 4px solid var(--primary);
         }
 
         .shopping-grid {
@@ -172,18 +185,18 @@
 
         .shopping-category {
             background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-            border: 1px solid var(--border-color);
+            padding: 1.8rem;
+            border-radius: 4px;
+            border: 2px solid var(--text-color);
+            box-shadow: 0 4px 10px rgba(47,46,45,0.03);
         }
 
         .shopping-category h3 {
             color: var(--primary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
             font-size: 1.2rem;
             border-bottom: 2px solid var(--primary);
-            padding-bottom: 0.3rem;
+            padding-bottom: 0.4rem;
         }
 
         .shopping-category ul {
@@ -191,12 +204,12 @@
         }
 
         .shopping-category li {
-            padding: 0.4rem 0;
-            border-bottom: 1px solid #F0F0F0;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
             font-size: 0.95rem;
         }
 
-        /* MODAL DE RECETAS */
+        /* MODAL DE RECETAS CON ESTILO PÓSTER ORGÁNICO */
         .modal {
             display: none;
             position: fixed;
@@ -206,54 +219,69 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(47,46,45,0.7);
             padding: 1rem;
         }
 
         .modal-content {
-            background-color: #fff;
-            margin: 5% auto;
-            padding: 2rem;
-            border-radius: 8px;
-            max-width: 600px;
+            background-color: var(--card-bg);
+            margin: 4% auto;
+            padding: 2.2rem;
+            border-radius: 4px;
+            max-width: 650px;
             width: 100%;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             position: relative;
+            border: 3px solid var(--text-color);
             animation: fadeIn 0.3s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .close-btn {
-            color: #aaa;
+            color: var(--text-color);
             position: absolute;
             right: 1.5rem;
             top: 1rem;
-            font-size: 2rem;
+            font-size: 2.2rem;
             font-weight: bold;
             cursor: pointer;
         }
 
         .close-btn:hover {
-            color: var(--text-color);
+            color: var(--accent);
+        }
+
+        .recipe-poster-header {
+            width: 100%;
+            height: 180px;
+            background: #EDE6DC;
+            border: 2px solid var(--text-color);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .modal-title {
             color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.6rem;
             border-bottom: 2px solid var(--secondary);
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.6rem;
         }
 
         .recipe-section-title {
-            font-weight: bold;
+            font-weight: 700;
             color: var(--secondary);
-            margin-top: 1rem;
-            margin-bottom: 0.3rem;
+            margin-top: 1.2rem;
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
         }
 
         .modal-content ul, .modal-content ol {
@@ -262,20 +290,21 @@
         }
 
         .modal-content li {
-            margin-bottom: 0.4rem;
-            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.98rem;
         }
 
         footer {
             text-align: center;
-            padding: 2rem;
-            background: var(--primary);
-            color: white;
-            margin-top: 3rem;
+            padding: 2.5rem;
+            background: #2B4135;
+            color: #FAF7F2;
+            margin-top: 4rem;
+            border-top: 4px solid var(--mustard);
         }
 
         @media (max-width: 600px) {
-            header h1 { font-size: 2rem; }
+            header h1 { font-size: 2.1rem; }
             .tab-btn { width: 100%; text-align: center; }
         }
     </style>
@@ -284,13 +313,13 @@
 
     <header>
         <h1>Keto Económico & Familiar</h1>
-        <p>Tu asesor nutricional diario: recetas saludables, prácticas y accesibles para compartir.</p>
+        <p>Asesor nutricional diario • Recetario con Arte Orgánico Latino</p>
     </header>
 
     <div class="container">
         <div class="intro-card">
             <h2>Bienvenida a tu Repositorio Nutricional</h2>
-            <p>Este espacio está diseñado para demostrar que llevar una alimentación cetogénica (keto) no tiene por qué ser costosa ni complicada. Haz clic en el botón <strong>"Ver Receta"</strong> de cada platillo para consultar los ingredientes detallados, pasos de preparación y tips de cocina.</p>
+            <p>Este espacio combina una alimentación cetogénica accesible con la estética del arte orgánico latino. Haz clic en el botón <strong>"Ver Receta"</strong> de cada platillo para consultar el póster ilustrado, los ingredientes detallados y la preparación.</p>
         </div>
 
         <div class="nav-tabs">
@@ -301,7 +330,7 @@
 
         <!-- PLAN SEMANAL -->
         <div id="plan-semanal" class="section-content active">
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary);">Semana 1: Menús Interactivos (4 Porciones)</h2>
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary);">Semana 1: Menús Interactivos Ilustrados (4 Porciones)</h2>
             
             <!-- LUNES -->
             <div class="day-card">
@@ -494,10 +523,13 @@
 
     </div>
 
-    <!-- MODAL DE RECETAS DINÁMICO -->
+    <!-- MODAL DE RECETAS CON ARTE ORGÁNICO LATINO -->
     <div id="recipeModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeRecipe()">&times;</span>
+            <div id="modalPosterHeader" class="recipe-poster-header">
+                <!-- SVG de Arte Orgánico Latino incrustado dinámicamente -->
+            </div>
             <div id="modalBody">
                 <!-- Contenido inyectado por JS -->
             </div>
@@ -505,7 +537,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Keto Económico & Familiar. Diseñado para compartir salud y bienestar.</p>
+        <p>&copy; 2026 Keto Económico & Familiar. Arte Orgánico Latino & Bienestar.</p>
     </footer>
 
     <script>
@@ -617,6 +649,31 @@
             }
         };
 
+        const latinoSvgArt = `
+            <svg width="100%" height="100%" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
+                <!-- Fondo marfil póster -->
+                <rect width="300" height="180" fill="#FAF7F2"/>
+                <!-- Marco interior -->
+                <rect x="15" y="15" width="270" height="150" fill="none" stroke="#2F2E2D" stroke-width="1.5"/>
+                <!-- Mancha Terracota -->
+                <ellipse cx="120" cy="95" rx="65" ry="50" fill="#D96B43" opacity="0.9"/>
+                <!-- Bloque Amarillo Sol -->
+                <polygon points="130,50 210,60 200,130 115,110" fill="#E8A838" opacity="0.85"/>
+                <!-- Tallo y Hojas Turquesa (Estilo botánico latino) -->
+                <line x1="95" y1="40" x2="95" y2="140" stroke="#1D6A73" stroke-width="3"/>
+                <ellipse cx="78" cy="70" rx="22" ry="10" transform="rotate(-25 78 70)" fill="#1D6A73"/>
+                <ellipse cx="112" cy="85" rx="20" ry="9" transform="rotate(20 112 85)" fill="#1D6A73"/>
+                <ellipse cx="80" cy="115" rx="18" ry="8" transform="rotate(-35 80 115)" fill="#1D6A73"/>
+                <!-- Acento Magenta / Coral -->
+                <circle cx="195" cy="70" rx="14" ry="14" fill="#C73E5D"/>
+                <!-- Línea Arte Abstracto Fino -->
+                <path d="M 140 120 Q 165 60 190 120 Q 215 180 240 120" fill="none" stroke="#2F2E2D" stroke-width="1.8"/>
+                <!-- Pequeños Detalles de Puntos -->
+                <circle cx="105" cy="145" r="4" fill="#C73E5D"/>
+                <circle cx="215" cy="135" r="5" fill="#1D6A73"/>
+            </svg>
+        `;
+
         function switchTab(evt, tabName) {
             let contents = document.getElementsByClassName("section-content");
             for (let i = 0; i < contents.length; i++) {
@@ -633,9 +690,12 @@
         function openRecipe(recipeId) {
             const modal = document.getElementById("recipeModal");
             const modalBody = document.getElementById("modalBody");
+            const modalHeader = document.getElementById("modalPosterHeader");
             const recipe = recipesData[recipeId];
 
             if (recipe) {
+                modalHeader.innerHTML = latinoSvgArt;
+
                 let html = `<h2 class="modal-title">${recipe.title}</h2>`;
                 
                 html += `<div class="recipe-section-title">🛒 Ingredientes:</div><ul>`;
@@ -669,3 +729,4 @@
 
 </body>
 </html>
+
