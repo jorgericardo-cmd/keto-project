@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Keto Económico & Familiar | Recetario Orgánico Latino</title>
+    <title>Keto Económico & Familiar | Repositorio Nutricional</title>
     <style>
         :root {
-            --primary: #1D6A73; /* Turquesa/Verde profundo latino */
-            --secondary: #D96B43; /* Terracotta cálido */
-            --accent: #C73E5D; /* Magenta/Coral vivo */
-            --mustard: #E8A838; /* Amarillo sol */
-            --bg-color: #F4EFEB; /* Crema analógica */
-            --card-bg: #FAF7F2; /* Marfil texturizado */
-            --text-color: #2F2E2D; /* Gris oscuro elegante */
+            --primary: #1D6A73;
+            --secondary: #D96B43;
+            --accent: #C73E5D;
+            --mustard: #E8A838;
+            --bg-color: #F4EFEB;
+            --card-bg: #FAF7F2;
+            --text-color: #2F2E2D;
             --border-color: #E2DBD0;
         }
 
@@ -40,7 +40,6 @@
         header h1 {
             font-size: 2.6rem;
             margin-bottom: 0.5rem;
-            letter-spacing: -0.5px;
             font-weight: 700;
         }
 
@@ -63,7 +62,6 @@
             box-shadow: 0 4px 12px rgba(47,46,45,0.04);
             margin-bottom: 2.5rem;
             border: 2px solid var(--text-color);
-            position: relative;
         }
 
         .intro-card h2 {
@@ -106,6 +104,29 @@
 
         .section-content.active {
             display: block;
+        }
+
+        .archive-selector {
+            margin-bottom: 2rem;
+            background: var(--card-bg);
+            padding: 1rem 1.5rem;
+            border: 2px solid var(--text-color);
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .archive-selector select {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: 2px solid var(--text-color);
+            background: #FAF7F2;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
         }
 
         .day-card {
@@ -209,7 +230,7 @@
             font-size: 0.95rem;
         }
 
-        /* MODAL DE RECETAS CON ESTILO PÓSTER ORGÁNICO */
+        /* MODAL DE RECETAS LIMPIO */
         .modal {
             display: none;
             position: fixed;
@@ -225,7 +246,7 @@
 
         .modal-content {
             background-color: var(--card-bg);
-            margin: 4% auto;
+            margin: 6% auto;
             padding: 2.2rem;
             border-radius: 4px;
             max-width: 650px;
@@ -253,19 +274,6 @@
 
         .close-btn:hover {
             color: var(--accent);
-        }
-
-        .recipe-poster-header {
-            width: 100%;
-            height: 180px;
-            background: #EDE6DC;
-            border: 2px solid var(--text-color);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
         }
 
         .modal-title {
@@ -313,13 +321,13 @@
 
     <header>
         <h1>Keto Económico & Familiar</h1>
-        <p>Asesor nutricional diario • Recetario con Arte Orgánico Latino</p>
+        <p>Asesor nutricional diario • Repositorio Histórico de Menús</p>
     </header>
 
     <div class="container">
         <div class="intro-card">
-            <h2>Bienvenida a tu Repositorio Nutricional</h2>
-            <p>Este espacio combina una alimentación cetogénica accesible con la estética del arte orgánico latino. Haz clic en el botón <strong>"Ver Receta"</strong> de cada platillo para consultar el póster ilustrado, los ingredientes detallados y la preparación.</p>
+            <h2>Repositorio Nutricional y Archivo Histórico</h2>
+            <p>Consulta el plan semanal activo y utiliza el selector de semanas para navegar por todas las recetas anteriores publicadas desde el inicio, garantizando acceso permanente sin borrar contenido.</p>
         </div>
 
         <div class="nav-tabs">
@@ -328,178 +336,310 @@
             <button class="tab-btn" onclick="switchTab(event, 'guia-keto')">💡 Guía Rápida</button>
         </div>
 
-        <!-- PLAN SEMANAL -->
+        <!-- PLAN SEMANAL CON ARCHIVO HISTÓRICO -->
         <div id="plan-semanal" class="section-content active">
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary);">Semana 1: Menús Interactivos Ilustrados (4 Porciones)</h2>
             
-            <!-- LUNES -->
-            <div class="day-card">
-                <h3>Lunes <span>Día 1</span></h3>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos revueltos con chorizo económico y espinacas salteadas.</div>
-                    <button class="recipe-btn" onclick="openRecipe('lunes-desayuno')">🍳 Ver Receta</button>
+            <div class="archive-selector">
+                <div>
+                    <strong>Seleccionar Semana Histórica:</strong>
                 </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Comida:</span> Pechuga de pollo deshebrada en caldillo de jitomate con coliflor rallada.</div>
-                    <button class="recipe-btn" onclick="openRecipe('lunes-comida')">🍲 Ver Receta</button>
+                <div>
+                    <select id="weekSelector" onchange="changeWeek(this.value)">
+                        <option value="semana-1">Semana 1 (Menú Base Económico)</option>
+                        <option value="semana-2" selected>Semana 2 (Menú Variado & Saciante)</option>
+                    </select>
                 </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Cena:</span> Atún en lata encebollado con mayonesa y rodajas de pepino.</div>
-                    <button class="recipe-btn" onclick="openRecipe('lunes-cena')">🥗 Ver Receta</button>
-                </div>
-                <div class="tip-box"><strong>Tip de Ahorro:</strong> Compra pollo con hueso o entero para aprovechar un mejor precio por kilo.</div>
             </div>
 
-            <!-- MARTES -->
-            <div class="day-card">
-                <h3>Martes <span>Día 2</span></h3>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Desayuno:</span> Omelette de huevo con queso fresco y tiras de tocino doradito.</div>
-                    <button class="recipe-btn" onclick="openRecipe('martes-desayuno')">🍳 Ver Receta</button>
+            <div id="semana-1" class="week-container" style="display:none;">
+                <h2 style="margin-bottom: 1.5rem; color: var(--primary);">Semana 1: Menús Económicos (4 Porciones)</h2>
+                
+                <div class="day-card">
+                    <h3>Lunes <span>Día 1</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos revueltos con chorizo económico y espinacas salteadas.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-lunes-desayuno')">🍳 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Pechuga de pollo deshebrada en caldillo de jitomate con coliflor rallada.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-lunes-comida')">🍲 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Atún en lata encebollado con mayonesa y rodajas de pepino.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-lunes-cena')">🥗 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> Compra pollo con hueso o entero para aprovechar un mejor precio por kilo.</div>
                 </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Comida:</span> Discada económica de cerdo (carne picada de cerdo con cebolla, chile y pimiento).</div>
-                    <button class="recipe-btn" onclick="openRecipe('martes-comida')">🥘 Ver Receta</button>
+
+                <div class="day-card">
+                    <h3>Martes <span>Día 2</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Omelette de huevo con queso fresco y tiras de tocino doradito.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-martes-desayuno')">🍳 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Discada económica de cerdo (carne picada de cerdo con cebolla, chile y pimiento).</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-martes-comida')">🥘 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Tortitas de espinaca con huevo y queso panela asado.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-martes-cena')">🥞 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> El cerdo es una de las opciones de proteína keto con mejor relación calidad-precio.</div>
                 </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Cena:</span> Tortitas de espinaca con huevo y queso panela asado.</div>
-                    <button class="recipe-btn" onclick="openRecipe('martes-cena')">🥞 Ver Receta</button>
+
+                <div class="day-card">
+                    <h3>Miércoles <span>Día 3</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos cocidos con mayonesa casera y un puñito de cacahuates tostados.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-miercoles-desayuno')">🥚 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Caldo de pollo económico con calabacitas en trozos y chayote.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-miercoles-comida')">🍲 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Salchichas de buena calidad asadas con cebolla y cama de lechuga.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-miercoles-cena')">🌭 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> Los caldos con huesos aportan colágeno, saciedad y rinden para varias porciones.</div>
                 </div>
-                <div class="tip-box"><strong>Tip de Ahorro:</strong> El cerdo es una de las opciones de proteína keto con mejor relación calidad-precio.</div>
+
+                <div class="day-card">
+                    <h3>Jueves <span>Día 4</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos estrellados sobre cama de espinacas salteadas en mantequilla.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-jueves-desayuno')">🍳 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Albóndigas de carne molida (res y cerdo) en salsa verde de tomatillo.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-jueves-comida')">🧆 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Ensalada de atún con pepino, cebolla, cilantro y aceite de oliva.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-jueves-cena')">🥗 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> Mezclar carne molida de res y cerdo abata costos y mejora la jugosidad.</div>
+                </div>
+
+                <div class="day-card">
+                    <h3>Viernes <span>Día 5</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Revoltillo de huevo con calabacita rallada y queso fundido.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-viernes-desayuno')">🍳 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Pechuga de pollo al horno con limón, ajo y mantequilla, con puré de coliflor.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-viernes-comida')">🍗 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Rollitos de jamón y queso crema con bastones de pepino.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-viernes-cena')">🥒 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> Aprovecha una sola cabeza de coliflor tanto para el arroz como para el puré.</div>
+                </div>
+
+                <div class="day-card">
+                    <h3>Sábado <span>Día 6</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos con mantequilla y chicharrón de cerdo crujiente.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-sabado-desayuno')">🍳 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Carne de cerdo en salsa pasilla con verduras de temporada.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-sabado-comida')">🥘 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Sopa cremosa de chayote con crema y trocitos de tocino.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-sabado-cena')">🥣 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> El chicharrón de cerdo aporta textura crujiente, cero carbohidratos y bajo costo.</div>
+                </div>
+
+                <div class="day-card">
+                    <h3>Domingo <span>Día 7</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Hot cakes keto económicos (hechos a base de huevo y queso crema).</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-domingo-desayuno')">🥞 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Pollo rostizado de mercado con ensalada fresca de lechuga y pepino.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-domingo-comida')">🍗 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Quesadillas con tortillas de queso (queso fundido en sartén) y pollo.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s1-domingo-cena')">🧀 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> El pollo rostizado listo ahorra tiempo en domingo y rinde de forma excelente.</div>
+                </div>
             </div>
 
-            <!-- MIÉRCOLES -->
-            <div class="day-card">
-                <h3>Miércoles <span>Día 3</span></h3>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos cocidos con mayonesa casera y un puñito de cacahuates tostados.</div>
-                    <button class="recipe-btn" onclick="openRecipe('miercoles-desayuno')">🥚 Ver Receta</button>
+            <!-- SEMANA 2 (ACTIVA) -->
+            <div id="semana-2" class="week-container">
+                <h2 style="margin-bottom: 1.5rem; color: var(--primary);">Semana 2: Menú Variado & Saciante (4 Porciones)</h2>
+                
+                <div class="day-card">
+                    <h3>Lunes <span>Día 1</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos pericos (revueltos con jitomate y cebolla) con aguacate.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-lunes-desayuno')">🍳 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Bistec de res en tiritas salteado con pimientos y cebolla (fajitas keto).</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-lunes-comida')">🥩 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Crema de calabacita con un toque de queso crema y tocino picado.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-lunes-cena')">🥣 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de la Semana:</strong> La variedad de verduras en esta semana aporta mayor saciedad y micronutrientes.</div>
                 </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Comida:</span> Caldo de pollo económico con calabacitas en trozos y chayote.</div>
-                    <button class="recipe-btn" onclick="openRecipe('miercoles-comida')">🍲 Ver Receta</button>
+
+                <div class="day-card">
+                    <h3>Martes <span>Día 2</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Rollitos de jamón rellenos de queso panela y crema.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-martes-desayuno')">🧀 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Muslos de pollo guisados en salsa de champiñones con crema.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-martes-comida')">🍗 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Ensalada de atún con mayonesa, apio crujiente y lechuga.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-martes-cena')">🥗 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> Los muslos de pollo son jugosos, económicos y tienen excelente contenido graso para keto.</div>
                 </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Cena:</span> Salchichas de buena calidad asadas con cebolla y cama de lechuga.</div>
-                    <button class="recipe-btn" onclick="openRecipe('miercoles-cena')">🌭 Ver Receta</button>
+
+                <div class="day-card">
+                    <h3>Miércoles <span>Día 3</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos duros marinados en aceite de oliva, sal y orégano con pepino.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-miercoles-desayuno')">🥚 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Albóndigas de cerdo en caldillo de chile guajillo ligero.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-miercoles-comida')">🍲 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Omelette ligero de claras (o huevo entero) con espinacas.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-miercoles-cena')">🍳 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> El chile guajillo seco da un gran sabor con un costo mínimo por porción.</div>
                 </div>
-                <div class="tip-box"><strong>Tip de Ahorro:</strong> Los caldos con huesos aportan colágeno, saciedad y rinden para varias porciones.</div>
+
+                <div class="day-card">
+                    <h3>Jueves <span>Día 4</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos revueltos con champiñones salteados en mantequilla.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-jueves-desayuno')">🍄 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Bistec de cerdo a la plancha con ensalada de pepino y aguacate.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-jueves-comida')">🥩 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Sopa rápida de pollo deshebrado con caldillo ligero y cilantro.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-jueves-cena')">🍲 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> Los champiñones aportan textura carnosa y combinan excelente con el huevo.</div>
+                </div>
+
+                <div class="day-card">
+                    <h3>Viernes <span>Día 5</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Panque keto exprés a la sartén (con harina de chicharrón y huevo).</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-viernes-desayuno')">🥞 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Pescado económico (filete blanco) empapelado con mantequilla, ajo y rodajas de jitomate.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-viernes-comida')">🐟 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Rollitos de lechuga rellenos de atún y crema.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-viernes-cena')">🥗 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> El filete blanco congelado es una alternativa económica para incluir pescado en la semana.</div>
+                </div>
+
+                <div class="day-card">
+                    <h3>Sábado <span>Día 6</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos estrellados con chicharrón en salsa verde ligera.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-sabado-desayuno')">🍳 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Costillitas de cerdo horneadas o en salsa verde con calabacitas.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-sabado-comida')">🍖 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Tostadas de chicharrón de cerdo con crema y aguacate.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-sabado-cena')">🥑 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> Usar el chicharrón como base crujiente sustituye perfectamente a las tostadas de maíz.</div>
+                </div>
+
+                <div class="day-card">
+                    <h3>Domingo <span>Día 7</span></h3>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Desayuno:</span> Omelette familiar de queso fundido con espinacas y tocino.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-domingo-desayuno')">🍳 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Comida:</span> Pollo al horno con hierbas finas, mantequilla y ensalada fresca.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-domingo-comida')">🍗 Ver Receta</button>
+                    </div>
+                    <div class="meal-item">
+                        <div class="meal-info"><span class="meal-type">Cena:</span> Gelatina keto o infusión relajante con cubitos de queso panela.</div>
+                        <button class="recipe-btn" onclick="openRecipe('s2-domingo-cena')">🍵 Ver Receta</button>
+                    </div>
+                    <div class="tip-box"><strong>Tip de Ahorro:</strong> Dedica un momento del domingo a planear las compras de la siguiente semana.</div>
+                </div>
             </div>
 
-            <!-- JUEVES -->
-            <div class="day-card">
-                <h3>Jueves <span>Día 4</span></h3>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos estrellados sobre cama de espinacas salteadas en mantequilla.</div>
-                    <button class="recipe-btn" onclick="openRecipe('jueves-desayuno')">🍳 Ver Receta</button>
-                </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Comida:</span> Albóndigas de carne molida (res y cerdo) en salsa verde de tomatillo.</div>
-                    <button class="recipe-btn" onclick="openRecipe('jueves-comida')">🧆 Ver Receta</button>
-                </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Cena:</span> Ensalada de atún con pepino, cebolla, cilantro y aceite de oliva.</div>
-                    <button class="recipe-btn" onclick="openRecipe('jueves-cena')">🥗 Ver Receta</button>
-                </div>
-                <div class="tip-box"><strong>Tip de Ahorro:</strong> Mezclar carne molida de res y cerdo abata costos y mejora la jugosidad.</div>
-            </div>
-
-            <!-- VIERNES -->
-            <div class="day-card">
-                <h3>Viernes <span>Día 5</span></h3>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Desayuno:</span> Revoltillo de huevo con calabacita rallada y queso fundido.</div>
-                    <button class="recipe-btn" onclick="openRecipe('viernes-desayuno')">🍳 Ver Receta</button>
-                </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Comida:</span> Pechuga de pollo al horno con limón, ajo y mantequilla, con puré de coliflor.</div>
-                    <button class="recipe-btn" onclick="openRecipe('viernes-comida')">🍗 Ver Receta</button>
-                </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Cena:</span> Rollitos de jamón y queso crema con bastones de pepino.</div>
-                    <button class="recipe-btn" onclick="openRecipe('viernes-cena')">🥒 Ver Receta</button>
-                </div>
-                <div class="tip-box"><strong>Tip de Ahorro:</strong> Aprovecha una sola cabeza de coliflor tanto para el arroz como para el puré.</div>
-            </div>
-
-            <!-- SÁBADO -->
-            <div class="day-card">
-                <h3>Sábado <span>Día 6</span></h3>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Desayuno:</span> Huevos con mantequilla y chicharrón de cerdo crujiente.</div>
-                    <button class="recipe-btn" onclick="openRecipe('sabado-desayuno')">🍳 Ver Receta</button>
-                </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Comida:</span> Carne de cerdo en salsa pasilla con verduras de temporada.</div>
-                    <button class="recipe-btn" onclick="openRecipe('sabado-comida')">🥘 Ver Receta</button>
-                </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Cena:</span> Sopa cremosa de chayote con crema y trocitos de tocino.</div>
-                    <button class="recipe-btn" onclick="openRecipe('sabado-cena')">🥣 Ver Receta</button>
-                </div>
-                <div class="tip-box"><strong>Tip de Ahorro:</strong> El chicharrón de cerdo aporta textura crujiente, cero carbohidratos y bajo costo.</div>
-            </div>
-
-            <!-- DOMINGO -->
-            <div class="day-card">
-                <h3>Domingo <span>Día 7</span></h3>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Desayuno:</span> Hot cakes keto económicos (hechos a base de huevo y queso crema).</div>
-                    <button class="recipe-btn" onclick="openRecipe('domingo-desayuno')">🥞 Ver Receta</button>
-                </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Comida:</span> Pollo rostizado de mercado con ensalada fresca de lechuga y pepino.</div>
-                    <button class="recipe-btn" onclick="openRecipe('domingo-comida')">🍗 Ver Receta</button>
-                </div>
-                <div class="meal-item">
-                    <div class="meal-info"><span class="meal-type">Cena:</span> Quesadillas con tortillas de queso (queso fundido en sartén) y pollo.</div>
-                    <button class="recipe-btn" onclick="openRecipe('domingo-cena')">🧀 Ver Receta</button>
-                </div>
-                <div class="tip-box"><strong>Tip de Ahorro:</strong> El pollo rostizado listo ahorra tiempo en domingo y rinde de forma excelente.</div>
-            </div>
         </div>
 
         <!-- LISTA DE COMPRAS -->
         <div id="lista-compras" class="section-content">
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary);">Lista de Compras (Optimizada para Presupuesto)</h2>
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary);">Lista de Compras (Semana 2)</h2>
             <div class="shopping-grid">
                 <div class="shopping-category">
                     <h3>🥚 Proteínas</h3>
                     <ul>
-                        <li><strong>Huevos:</strong> 2.5 a 3 casilleros (75-90 pzas)</li>
-                        <li><strong>Carne molida:</strong> 1.5 kg (mix res/cerdo)</li>
-                        <li><strong>Cerdo en trozo/bistec:</strong> 1.5 kg</li>
-                        <li><strong>Pollo (entero/piezas):</strong> 2.5 kg</li>
-                        <li><strong>Atún en lata:</strong> 8 a 10 latas</li>
-                        <li><strong>Salchichas y Chorizo:</strong> 500 g c/u</li>
+                        <li><strong>Huevos:</strong> 3 casilleros (90 piezas)</li>
+                        <li><strong>Bistec de res / fajitas:</strong> 1.5 kg</li>
+                        <li><strong>Muslos de pollo y pollo entero:</strong> 3 kg</li>
+                        <li><strong>Filete de pescado blanco:</strong> 1 kg</li>
+                        <li><strong>Costilla de cerdo:</strong> 1.5 kg</li>
+                        <li><strong>Atún en lata:</strong> 8 latas</li>
                     </ul>
                 </div>
                 <div class="shopping-category">
                     <h3>🧀 Lácteos y Grasas</h3>
                     <ul>
-                        <li><strong>Queso fresco/Panela/Fundir:</strong> 1 kg surtido</li>
-                        <li><strong>Mantequilla o Manteca:</strong> 500 g</li>
-                        <li><strong>Crema ácida:</strong> 1 tarro grande (500 ml)</li>
-                        <li><strong>Aceite vegetal o de oliva:</strong> 1 litro</li>
+                        <li><strong>Queso panela y fresco:</strong> 1 kg</li>
+                        <li><strong>Queso para fundir / Manchego:</strong> 500 g</li>
+                        <li><strong>Crema ácida:</strong> 2 tarros (500 ml c/u)</li>
+                        <li><strong>Mantequilla y aceite:</strong> 500g / 1 litro</li>
                     </ul>
                 </div>
                 <div class="shopping-category">
                     <h3>🥦 Verduras y Frescos</h3>
                     <ul>
-                        <li><strong>Coliflor:</strong> 2 piezas medianas</li>
-                        <li><strong>Calabacitas (zuchini):</strong> 2 kg</li>
-                        <li><strong>Espinacas:</strong> 2 bolsas grandes</li>
-                        <li><strong>Pepinos:</strong> 1.5 kg</li>
-                        <li><strong>Jitomates y Tomatillos:</strong> 1.5 kg</li>
-                        <li><strong>Cebollas y Ajos:</strong> 1 malla / 1 cabeza</li>
+                        <li><strong>Calabacitas y Champiñones:</strong> 2 kg surtido</li>
+                        <li><strong>Aguacates:</strong> 1 malla (4-5 pzas)</li>
+                        <li><strong>Espinacas y Lechuga:</strong> 2 bolsas / 2 piezas</li>
+                        <li><strong>Jitomates, tomatillos y chiles:</strong> 2 kg</li>
+                        <li><strong>Pepinos y Apio:</strong> 1.5 kg</li>
                     </ul>
                 </div>
                 <div class="shopping-category">
                     <h3>🥜 Despensa y Extras</h3>
                     <ul>
-                        <li><strong>Chicharrón de cerdo:</strong> 200 g</li>
-                        <li><strong>Cacahuates tostados:</strong> 1 bolsa pequeña</li>
-                        <li><strong>Sal, pimienta y especias básicas</strong></li>
+                        <li><strong>Chicharrón de cerdo:</strong> 300 g</li>
+                        <li><strong>Chile guajillo seco:</strong> 1 bolsita</li>
+                        <li><strong>Especias, sal y ajo en polvo</strong></li>
                     </ul>
                 </div>
             </div>
@@ -507,29 +647,19 @@
 
         <!-- GUIA KETO -->
         <div id="guia-keto" class="section-content">
-            <h2 style="margin-bottom: 1.5rem; color: var(--primary);">Guía Básica de la Dieta Cetogénica</h2>
+            <h2 style="margin-bottom: 1.5rem; color: var(--primary);">Guía de Acceso y Archivo Histórico</h2>
             <div class="intro-card" style="border-left-color: var(--secondary);">
-                <h3>¿Qué es el estilo Keto?</h3>
-                <p style="margin-bottom: 1rem;">Es una alimentación baja en carbohidratos y alta en grasas saludables que obliga al cuerpo a utilizar las grasas almacenadas como su principal fuente de energía (estado de cetosis).</p>
-                
-                <h3 style="margin-top: 1.5rem;">Pilares del ahorro en Keto:</h3>
-                <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
-                    <li><strong>Prioriza ingredientes básicos:</strong> El huevo y el pollo son los mejores aliados económicos. No necesitas harinas caras de almendra o coco para empezar.</li>
-                    <li><strong>Compra en mercados locales:</strong> Las verduras de temporada y las carnicerías de barrio reducen drásticamente el gasto semanal.</li>
-                    <li><strong>Cocina en lote (Batch Cooking):</strong> Preparar caldos grandes o guisados que rindan para varios días ahorra tiempo y gas/energía.</li>
-                </ul>
+                <h3>¿Cómo funciona el almacenamiento de semanas anteriores?</h3>
+                <p style="margin-bottom: 1rem;">Tal como se sugirió originalmente, el sitio web cuenta con un <strong>selector desplegable de semanas</strong> en la pestaña principal del plan semanal. De este modo, las recetas de semanas pasadas nunca se borran ni se sobrescriben, sino que quedan acumuladas y accesibles permanentemente para que cualquier familiar pueda consultarlas en el mismo sitio en el momento que desee.</p>
             </div>
         </div>
 
     </div>
 
-    <!-- MODAL DE RECETAS CON ARTE ORGÁNICO LATINO -->
+    <!-- MODAL DE RECETAS LIMPIO -->
     <div id="recipeModal" class="modal">
         <div class="modal-content">
             <span class="close-btn" onclick="closeRecipe()">&times;</span>
-            <div id="modalPosterHeader" class="recipe-poster-header">
-                <!-- SVG de Arte Orgánico Latino incrustado dinámicamente -->
-            </div>
             <div id="modalBody">
                 <!-- Contenido inyectado por JS -->
             </div>
@@ -537,142 +667,57 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Keto Económico & Familiar. Arte Orgánico Latino & Bienestar.</p>
+        <p>&copy; 2026 Keto Económico & Familiar. Repositorio Nutricional Histórico.</p>
     </footer>
 
     <script>
         const recipesData = {
-            "lunes-desayuno": {
-                title: "Huevos revueltos con chorizo económico y espinacas",
-                ingredients: ["4 huevos", "100g de chorizo económico", "2 tazas de espinacas frescas", "1 cucharada de aceite o manteca", "Sal y pimienta al gusto"],
-                prep: ["En una sartén a fuego medio, fríe el chorizo hasta que suelte su grasa.", "Agrega las espinacas y saltea durante 1 minuto hasta que reduzcan su tamaño.", "Añade los huevos batidos previamente con sal y pimienta.", "Revuelve constantemente hasta que el huevo alcance la consistencia deseada y sirve caliente."]
-            },
-            "lunes-comida": {
-                title: "Pollo deshebrado en caldillo con arroz de coliflor",
-                ingredients: ["500g de pechuga de pollo cocida y deshebrada", "3 jitomates cocidos con ajo y cebolla", "1 cabeza de coliflor rallada", "2 cucharadas de aceite", "Caldo de pollo y sal al gusto"],
-                prep: ["Licúa los jitomates con ajo, cebolla y un poco de caldo de pollo para hacer el recaudo.", "En una olla, sofríe el recaudo con una cucharada de aceite por 5 minutos.", "Agrega el pollo deshebrado y deja hervir a fuego lento por 10 minutos.", "Para el 'falso arroz': saltea la coliflor rallada en una sartén con aceite, sal y ajo en polvo por 5 minutos hasta que esté tierna pero firme."]
-            },
-            "lunes-cena": {
-                title: "Atún encebollado con mayonesa y pepino",
-                ingredients: ["2 latas de atún en agua o aceite (drenadas)", "1/2 cebolla en plumas finas", "4 cucharadas de mayonesa", "1 pepino grande cortado en rodajas", "Jugo de limón, sal y pimienta"],
-                prep: ["En un bol, mezcla el atún drenado con la mayonesa, sal y pimienta.", "Añade la cebolla en plumas finas y un chorrito de jugo de limón para suavizarla.", "Sirve el preparado acompañado de las rodajas frescas de pepino crujiente."]
-            },
-            "martes-desayuno": {
-                title: "Omelette de queso fresco y tocino",
-                ingredients: ["4 huevos", "50g de tocino en tiras", "60g de queso fresco desmoronado o en láminas", "Mantequilla para engrasar"],
-                prep: ["Dora las tiras de tocino en una sartén hasta que estén crujientes; retira y reserva (deja un poco de grasa en la sartén).", "Bate los huevos con una pizca de sal y viértelos en la sartén a fuego medio-bajo.", "Cuando los bordes empiecen a cuajar, coloca el queso fresco y el tocino crujiente en una mitad.", "Dobla el omelette por la mitad y cocina 1 minuto más hasta fundir el queso."]
-            },
-            "martes-comida": {
-                title: "Discada económica de cerdo",
-                ingredients: ["500g de carne picada de cerdo", "1 cebolla picada en cuadros", "1 chile serrano picado (opcional)", "1 pimiento verde en tiras", "Aceite, sal, pimienta y comino"],
-                prep: ["Calienta un poco de aceite en una sartén grande y sofríe la cebolla y el pimiento hasta que estén transparentes.", "Agrega la carne picada de cerdo, sazonando con sal, pimienta y una pizca de comino.", "Cocina a fuego medio-alto hasta que la carne esté bien doradita y los jugos se hayan evaporado.", "Sirve caliente, ideal para comer sola o acompañada de aguacate."]
-            },
-            "martes-cena": {
-                title: "Tortitas de espinaca con queso panela",
-                ingredients: ["3 tazas de espinacas cocidas y picadas finamente", "2 huevos", "3 cucharadas de harina de chicharrón o queso rallado (para dar estructura)", "100g de queso panela en cubos", "Aceite o mantequilla para dorar"],
-                prep: ["Mezcla las espinacas picadas con los huevos y el aglutinante elegido (harina de chicharrón o queso).", "Forma pequeñas porciones y coloca un cubo de queso panela al centro de cada una.", "Fríe en una sartén con un poco de aceite o mantequilla a fuego medio hasta que estén doradas por ambos lados."]
-            },
-            "miercoles-desayuno": {
-                title: "Huevos cocidos con mayonesa y cacahuates",
-                ingredients: ["4 huevos duros (hervidos por 9 minutos)", "3 cucharadas de mayonesa", "1 puñito (30g) de cacahuates tostados", "Sal y pimentón en polvo"],
-                prep: ["Corta los huevos duros por la mitad y retira las yemas.", "Coloca las yemas en un bol y mezclalas con la mayonesa, sal y pimentón hasta formar una pasta cremosa.", "Rellena las claras con la mezcla de yemas y acompaña con los cacahuates tostados a un lado."]
-            },
-            "miercoles-comida": {
-                title: "Caldo de pollo económico con verduras",
-                ingredients: ["1 kg de piezas económicas de pollo (huacales, patas o piernas)", "2 calabacitas en trozos", "1 chayote en cubos", "1 cebolla, 2 dientes de ajo y ramas de cilantro", "Agua y sal"],
-                prep: ["En una olla grande, hierve 2 litros de agua con la cebolla, el ajo y las piezas de pollo por 20 minutos.", "Retira la espuma superficial si es necesario.", "Agrega el chayote (que toma un poco más de tiempo) y 10 minutos después las calabacitas.", "Añade el cilantro fresco, rectifica la sal y sirve bien caliente."]
-            },
-            "miercoles-cena": {
-                title: "Salchichas asadas con cebolla y lechuga",
-                ingredients: ["6 salchichas de buena calidad (revisar bajos carbos)", "1 cebolla mediana en juliana", "1 cucharada de mantequilla", "Hojas de lechuga fresca para cama"],
-                prep: ["Corta las salchichas en rodajas diagonales.", "En una sartén con mantequilla, sofríe la cebolla hasta que esté caramelizada.", "Agrega las salchichas y saltea hasta que estén bien doraditas.", "Sirve sobre una cama de hojas de lechuga fresca."]
-            },
-            "jueves-desayuno": {
-                title: "Huevos estrellados sobre espinacas salteadas",
-                ingredients: ["4 huevos", "3 tazas de espinacas frescas", "1 cucharada de mantequilla", "Sal, pimienta y ajo en polvo"],
-                prep: ["En una sartén con mantequilla, saltea las espinacas con ajo en polvo y sal durante 1 minuto hasta que reduzcan.", "Haz pequeños espacios en la sartén y casca los huevos directamente sobre las espinacas.", "Tapa la sartén y cocina a fuego bajo hasta que las claras estén firmes y la yema al gusto."]
-            },
-            "jueves-comida": {
-                title: "Albóndigas mixtas en salsa verde",
-                ingredients: ["300g de carne molida de res y 200g de cerdo", "1 huevo y 2 cucharadas de queso parmesano (para amarrar)", "500g de tomatillos verdes y 2 chiles serranos (hervidos)", "Cebolla, ajo y cilantro"],
-                prep: ["Mezcla las carnes con el huevo, queso, sal y pimienta; forma bolitas pequeñas.", "Licúa los tomatillos cocidos con chiles, ajo, cebolla y cilantro para la salsa.", "Hierve la salsa en una olla, añade con cuidado las albóndigas crudas y cocina a fuego medio por 20 minutos hasta que estén cocidas."]
-            },
-            "jueves-cena": {
-                title: "Ensalada fresca de atún y pepino",
-                ingredients: ["2 latas de atún en agua", "1 pepino en cubitos", "1/2 cebolla picada fina", "Cilantro fresco picado", "3 cucharadas de aceite de oliva y jugo de limón"],
-                prep: ["Drena las latas de atún y colócalas en un tazón.", "Agrega el pepino en cubitos, la cebolla y el cilantro fresco.", "Adereza con el aceite de oliva, jugo de limón, sal y pimienta al gusto. Mezcla bien y sirve."]
-            },
-            "viernes-desayuno": {
-                title: "Revoltillo de huevo con calabacita y queso",
-                ingredients: ["4 huevos", "1 calabacita mediana rallada", "80g de queso para fundir", "1 cucharada de mantequilla", "Sal y pimienta"],
-                prep: ["En una sartén con mantequilla, saltea la calabacita rallada durante 3 minutos para evaporar su exceso de agua.", "Bate los huevos con sal y pimienta, y viértelos sobre la calabacita.", "Revuelve y, antes de que termine de cocerse, añade el queso para fundir. Mezcla hasta integrar."]
-            },
-            "viernes-comida": {
-                title: "Pechuga al horno con mantequilla y puré de coliflor",
-                ingredients: ["4 filetes de pechuga de pollo", "50g de mantequilla derretida, ajo en polvo y jugo de limón", "1 cabeza de coliflor cocida al vapor", "2 cucharadas de crema ácida"],
-                prep: ["Baña las pechugas con la mantequilla derretida, ajo, limón, sal y pimienta; hornea a 200°C por 20 minutos.", "Para el puré: licúa o procesa la coliflor cocida junto con la crema ácida, mantequilla, sal y pimienta hasta obtener una textura suave.", "Sirve el pollo acompañado del puré caliente."]
-            },
-            "viernes-cena": {
-                title: "Rollitos de jamón y queso crema",
-                ingredients: ["8 rebanadas de jamón de buena calidad", "100g de queso crema (tipo Philadelphia)", "1 pepino cortado en bastones largos"],
-                prep: ["Unta una capa generosa de queso crema sobre cada rebanada de jamón.", "Coloca un bastón de pepino en un extremo y enrolla firmemente.", "Corta en porciones tipo 'sushi' si lo deseas y disfruta un bocadillo rápido."]
-            },
-            "sabado-desayuno": {
-                title: "Huevos con mantequilla y chicharrón crujiente",
-                ingredients: ["4 huevos", "2 cucharadas de mantequilla", "50g de chicharrón de cerdo en trozos medianos", "Sal al gusto"],
-                prep: ["En una sartén, derrite la mantequilla a fuego medio.", "Agrega los huevos y revuélvelos suavemente.", "Justo antes de retirar del fuego, incorpora los trozos de chicharrón de cerdo para mantener su textura crujiente."]
-            },
-            "sabado-comida": {
-                title: "Cerdo en salsa pasilla con verduras",
-                ingredients: ["500g de carne de cerdo en trozos", "4 chiles pasilla desvenados y suavizados en agua caliente", "2 dientes de ajo y 1 cebolla pequeña", "2 calabacitas en rodajas", "Aceite y sal"],
-                prep: ["Dora los trozos de cerdo en una olla con un poco de aceite hasta que estén bien sellados.", "Licúa los chiles pasilla suavizados con el ajo, la cebolla y un vaso de agua.", "Vierte la salsa sobre la carne, añade las rodajas de calabacita y cocina a fuego bajo por 30 minutos hasta que la carne esté suave."]
-            },
-            "sabado-cena": {
-                title: "Sopa cremosa de chayote y tocino",
-                ingredients: ["2 chayotes cocidos y pelados", "3 tiras de tocino doradas y picadas", "3 cucharadas de crema ácida", "1 taza de caldo de pollo o agua", "Sal y pimienta"],
-                prep: ["Licúa los chayotes cocidos junto con la crema ácida, el caldo de pollo, sal y pimienta hasta obtener una crema tersa.", "Calienta la crema en una olla pequeña a fuego medio durante 5 minutos.", "Sirve en tazón y decora esparciendo el tocino crujiente picado por encima."]
-            },
-            "domingo-desayuno": {
-                title: "Hot cakes keto económicos de huevo y queso crema",
-                ingredients: ["2 huevos", "60g de queso crema", "1 cucharadita de mantequilla para cocinar", "Opcional: unas gotas de vainilla o sustituto de azúcar"],
-                prep: ["Licúa los huevos junto con el queso crema (y la vainilla/endulzante si deseas) hasta obtener una mezcla homogénea.", "Calienta una sartén antiadherente con un toque de mantequilla a fuego medio-bajo.", "Vierte porciones pequeñas de la mezcla para formar los hot cakes; voltea con cuidado cuando veas burbujas en la superficie (se doran rápido)."]
-            },
-            "domingo-comida": {
-                title: "Pollo rostizado con ensalada fresca",
-                ingredients: ["1 pollo rostizado económico comprado en mercado", "1 lechuga romana lavada y picada", "1 pepino en rodajas", "Aceite de oliva, limón y sal"],
-                prep: ["Divide el pollo rostizado en piezas iguales para servir.", "Prepara una ensalada rápida mezclando la lechuga picada con las rodajas de pepino.", "Adereza la ensalada con aceite de oliva, jugo de limón y sal al gusto. Acompaña el pollo."]
-            },
-            "domingo-cena": {
-                title: "Quesadillas con tortilla de queso y pollo",
-                ingredients: ["150g de queso rallado para fundir (tipo manchego o oaxaca)", "Restos deshebrados del pollo rostizado del día", "1 cucharadita de mantequilla"],
-                prep: ["Calienta una sartén antiadherente a fuego medio con un toque de mantequilla.", "Forma un círculo con el queso rallado directamente en la sartén caliente.", "Cuando los bordes comiencen a dorarse y fundirse, coloca el pollo deshebrado en una mitad.", "Dobla con ayuda de una espátula como una quesadilla tradicional, deja dorar 30 segundos por lado y sirve."]
-            }
-        };
+            /* SEMANA 1 */
+            "s1-lunes-desayuno": { title: "Huevos revueltos con chorizo económico y espinacas", ingredients: ["4 huevos", "100g de chorizo económico", "2 tazas de espinacas", "Aceite o manteca", "Sal y pimienta"], prep: ["Fríe el chorizo en sartén.", "Agrega espinacas hasta reducir.", "Añade huevos batidos y revuelve hasta cocinar."] },
+            "s1-lunes-comida": { title: "Pollo en caldillo con arroz de coliflor", ingredients: ["500g pollo deshebrado", "3 jitomates cocidos con ajo/cebolla", "1 coliflor rallada", "Caldo de pollo"], prep: ["Licúa jitomates con ajo y cebolla para el recaudo.", "Sofríe y añade pollo deshebrado.", "Acompaña con coliflor salteada."] },
+            "s1-lunes-cena": { title: "Atún encebollado con pepino", ingredients: ["2 latas de atún", "1/2 cebolla", "4 cdas mayonesa", "Pepino en rodajas"], prep: ["Mezcla atún drenado con mayonesa y cebolla en plumas.", "Sirve con rodajas de pepino."] },
+            "s1-martes-desayuno": { title: "Omelette de queso fresco y tocino", ingredients: ["4 huevos", "50g tocino", "60g queso fresco", "Mantequilla"], prep: ["Dora el tocino y reserva.", "Bate huevos y vierte a la sartén.", "Rellena con queso y tocino, dobla."] },
+            "s1-martes-comida": { title: "Discada económica de cerdo", ingredients: ["500g carne molida de cerdo", "Cebolla y pimiento", "Aceite y especias"], prep: ["Sofríe cebolla y pimiento.", "Agrega cerdo y dora bien.", "Sirve caliente."] },
+            "s1-martes-cena": { title: "Tortitas de espinaca con panela", ingredients: ["Espinacas picadas", "2 huevos", "Queso panela en cubos"], prep: ["Mezcla espinacas y huevos.", "Forma tortitas con cubo de panela al centro.", "Fríe hasta dorar."] },
+            "s1-miercoles-desayuno": { title: "Huevos cocidos con mayonesa y cacahuates", ingredients: ["4 huevos duros", "Mayonesa", "Cacahuates tostados"], prep: ["Corta huevos, saca yemas y mezcla con mayonesa.", "Rellena y acompaña con cacahuates."] },
+            "s1-miercoles-comida": { title: "Caldo de pollo económico con verduras", ingredients: ["1 kg piezas de pollo", "Calabacitas y chayote", "Cebolla, ajo y cilantro"], prep: ["Hierve pollo con agua, cebolla y ajo 20 mins.", "Agrega chayote y calabacitas.", "Sirve caliente."] },
+            "s1-miercoles-cena": { title: "Salchichas asadas con cebolla", ingredients: ["6 salchichas keto", "Cebolla en juliana", "Mantequilla", "Lechuga"], prep: ["Sofríe cebolla con mantequilla.", "Agrega salchichas en rodajas y dora.", "Sirve sobre lechuga."] },
+            "s1-jueves-desayuno": { title: "Huevos estrellados sobre espinacas", ingredients: ["4 huevos", "Espinacas", "Mantequilla y ajo"], prep: ["Saltea espinacas con mantequilla.", "Haz espacios y casca huevos encima.", "Tapa hasta cuajar."] },
+            "s1-jueves-comida": { title: "Albóndigas mixtas en salsa verde", ingredients: ["Carne res/cerdo", "Tomatillos y chiles", "Cebolla y cilantro"], prep: ["Forma albóndigas de carne.", "Licúa salsa verde y hierve.", "Cocina albóndigas en la salsa 20 mins."] },
+            "s1-jueves-cena": { title: "Ensalada fresca de atún y pepino", ingredients: ["2 latas atún", "Pepino en cubos", "Cebolla, limón y aceite de oliva"], prep: ["Mezcla todos los ingredientes en un tazón y sirve."] },
+            "s1-viernes-desayuno": { title: "Revoltillo con calabacita y queso", ingredients: ["4 huevos", "Calabacita rallada", "Queso para fundir", "Mantequilla"], prep: ["Saltea calabacita rallada.", "Añade huevos batidos y queso.", "Revuelve hasta fundir."] },
+            "s1-viernes-comida": { title: "Pechuga al horno con puré de coliflor", ingredients: ["4 pechugas de pollo", "Mantequilla y limón", "Coliflor y crema ácida"], prep: ["Hornea pollo con mantequilla y limón.", "Procesa coliflor cocida con crema para puré."] },
+            "s1-viernes-cena": { title: "Rollitos de jamón y queso crema", ingredients: ["8 rebanadas jamón", "Queso crema", "Bastones de pepino"], prep: ["Unta queso crema en jamón, coloca pepino y enrolla."] },
+            "s1-sabado-desayuno": { title: "Huevos con mantequilla y chicharrón", ingredients: ["4 huevos", "Mantequilla", "Chicharrón de cerdo"], prep: ["Revuelve huevos en mantequilla.", "Incorpora chicharrón triturado al final."] },
+            "s1-sabado-comida": { title: "Cerdo en salsa pasilla con verduras", ingredients: ["500g cerdo en trozos", "Chiles pasilla", "Calabacitas"], prep: ["Dora cerdo, licúa salsa con pasilla y vierte.", "Agrega calabacitas y hierve."] },
+            "s1-sabado-cena": { title: "Sopa cremosa de chayote y tocino", ingredients: ["2 chayotes cocidos", "Crema ácida", "Tocino crujiente"], prep: ["Licúa chayote con crema y caldo.", "Calienta y decora con tocino."] },
+            "s1-domingo-desayuno": { title: "Hot cakes keto de queso crema", ingredients: ["2 huevos", "60g queso crema", "Mantequilla"], prep: ["Licúa huevos y queso crema.", "Vierte porciones en sartén caliente y dora por ambos lados."] },
+            "s1-domingo-comida": { title: "Pollo rostizado con ensalada", ingredients: ["Pollo rostizado", "Lechuga y pepino", "Aceite y limón"], prep: ["Divide pollo y acompaña con ensalada fresca aderezada."] },
+            "s1-domingo-cena": { title: "Quesadillas con tortilla de queso", ingredients: ["Queso rallado", "Pollo deshebrado", "Mantequilla"], prep: ["Forma círculo de queso en sartén, añade pollo, dobla y dora."] },
 
-        const latinoSvgArt = `
-            <svg width="100%" height="100%" viewBox="0 0 300 180" xmlns="http://www.w3.org/2000/svg">
-                <!-- Fondo marfil póster -->
-                <rect width="300" height="180" fill="#FAF7F2"/>
-                <!-- Marco interior -->
-                <rect x="15" y="15" width="270" height="150" fill="none" stroke="#2F2E2D" stroke-width="1.5"/>
-                <!-- Mancha Terracota -->
-                <ellipse cx="120" cy="95" rx="65" ry="50" fill="#D96B43" opacity="0.9"/>
-                <!-- Bloque Amarillo Sol -->
-                <polygon points="130,50 210,60 200,130 115,110" fill="#E8A838" opacity="0.85"/>
-                <!-- Tallo y Hojas Turquesa (Estilo botánico latino) -->
-                <line x1="95" y1="40" x2="95" y2="140" stroke="#1D6A73" stroke-width="3"/>
-                <ellipse cx="78" cy="70" rx="22" ry="10" transform="rotate(-25 78 70)" fill="#1D6A73"/>
-                <ellipse cx="112" cy="85" rx="20" ry="9" transform="rotate(20 112 85)" fill="#1D6A73"/>
-                <ellipse cx="80" cy="115" rx="18" ry="8" transform="rotate(-35 80 115)" fill="#1D6A73"/>
-                <!-- Acento Magenta / Coral -->
-                <circle cx="195" cy="70" rx="14" ry="14" fill="#C73E5D"/>
-                <!-- Línea Arte Abstracto Fino -->
-                <path d="M 140 120 Q 165 60 190 120 Q 215 180 240 120" fill="none" stroke="#2F2E2D" stroke-width="1.8"/>
-                <!-- Pequeños Detalles de Puntos -->
-                <circle cx="105" cy="145" r="4" fill="#C73E5D"/>
-                <circle cx="215" cy="135" r="5" fill="#1D6A73"/>
-            </svg>
-        `;
+            /* SEMANA 2 */
+            "s2-lunes-desayuno": { title: "Huevos pericos con aguacate", ingredients: ["4 huevos", "1 jitomate y 1/2 cebolla picados", "1 aguacate en rebanadas", "Mantequilla"], prep: ["Sofríe jitomate y cebolla.", "Agrega los huevos y revuelve.", "Sirve acompañado de rebanadas de aguacate fresco."] },
+            "s2-lunes-comida": { title: "Fajitas de res salteadas", ingredients: ["500g bistec de res en tiritas", "1 pimiento en tiras", "1 cebolla", "Aceite y especias"], prep: ["Saltea la cebolla y pimientos en sartén caliente.", "Agrega las tiritas de bistec, salpimienta y dora bien."] },
+            "s2-lunes-cena": { title: "Crema de calabacita con tocino", ingredients: ["3 calabacitas cocidas", "2 cdas queso crema", "3 tiras de tocino picado"], prep: ["Licúa las calabacitas con el queso crema y un poco de agua.", "Calienta y corona con el tocino doradito."] },
+            "s2-martes-desayuno": { title: "Rollitos de jamón y panela", ingredients: ["8 rebanadas de jamón", "100g queso panela en bastones", "Crema ácida"], prep: ["Unta crema al jamón, coloca panela en bastón y enrolla firmemente."] },
+            "s2-martes-comida": { title: "Muslos de pollo en salsa de champiñones", ingredients: ["4 muslos de pollo", "200g champiñones rebanados", "1/2 taza de crema ácida", "Ajo y mantequilla"], prep: ["Dora los muslos de pollo en sartén.", "Retira y en la misma grasa saltea champiñones con ajo, crema y mantequilla.", "Integra el pollo y cocina 10 mins."] },
+            "s2-martes-cena": { title: "Ensalada cremosa de atún y apio", ingredients: ["2 latas de atún", "1 rama de apio finamente picada", "Mayonesa", "Lechuga"], prep: ["Mezcla el atún drenado con mayonesa y apio picado.", "Sirve sobre hojas de lechuga crujiente."] },
+            "s2-miercoles-desayuno": { title: "Huevos duros marinados con pepino", ingredients: ["4 huevos cocidos", "Aceite de oliva, orégano y sal", "1 pepino en rodajas"], prep: ["Corta los huevos duros y rocía con aceite de oliva, sal y orégano.", "Acompaña con rodajas de pepino."] },
+            "s2-miercoles-comida": { title: "Albóndigas de cerdo en chile guajillo", ingredients: ["500g carne molida de cerdo", "3 chiles guajillos cocidos", "Ajo, cebolla y comino"], prep: ["Forma albóndigas con la carne sazonada.", "Licúa los chiles guajillos con ajo, cebolla y agua para el caldillo.", "Hierve las albóndigas en el caldo por 20 minutos."] },
+            "s2-miercoles-cena": { title: "Omelette ligero de espinacas", ingredients: ["4 huevos (o 2 enteros y 2 claras)", "2 tazas de espinacas", "Mantequilla"], prep: ["Saltea espinacas brevemente.", "Vierte el huevo batido, dobla en omelette y sirve."] },
+            "s2-jueves-desayuno": { title: "Huevos con champiñones salteados", ingredients: ["4 huevos", "150g champiñones en láminas", "Mantequilla y ajo en polvo"], prep: ["Saltea los champiñones en mantequilla hasta dorar.", "Añade los huevos batidos y revuelve."] },
+            "s2-jueves-comida": { title: "Bistec de cerdo a la plancha con aguacate", ingredients: ["500g bistec de cerdo", "1 pepino", "1 aguacate", "Limón y sal"], prep: ["Cocina los bisteces de cerdo a la plancha.", "Sirve con ensalada de pepino y aguacate fresco."] },
+            "s2-jueves-cena": { title: "Sopa rápida de pollo deshebrado", ingredients: ["1 taza de pollo cocido deshebrado", "Caldo de pollo", "Cilantro y limón"], prep: ["Calienta el caldo de pollo, agrega el pollo deshebrado y cilantro fresco.", "Sirve caliente con unas gotas de limón."] },
+            "s2-viernes-desayuno": { title: "Panque keto exprés a la sartén", ingredients: ["2 huevos", "2 cdas harina de chicharrón", "1 cda crema o mantequilla"], prep: ["Mezcla los ingredientes hasta integrar.", "Vierte en sartén caliente y dora por ambos lados como un hot cake grueso."] },
+            "s2-viernes-comida": { title: "Pescado empapelado a la mantequilla", ingredients: ["4 filetes de pescado blanco", "Mantequilla, ajo y rodajas de jitomate", "Papel aluminio"], prep: ["Coloca cada filete en aluminio con mantequilla, ajo, sal y jitomate.", "Cierra en sobre y hornea o calienta en sartén tapado por 12 mins."] },
+            "s2-viernes-cena": { title: "Rollitos de lechuga con atún", ingredients: ["Hojas grandes de lechuga", "2 latas de atún con mayonesa"], prep: ["Rellena las hojas de lechuga con la mezcla de atún y enrolla como taco."] },
+            "s2-sabado-desayuno": { title: "Huevos estrellados con chicharrón en salsa verde", ingredients: ["4 huevos", "Salsa verde cocida", "Chicharrón de cerdo"], prep: ["Calienta salsa verde con trocitos de chicharrón.", "Coloca los huevos estrellados encima para que se ablanden ligeramente."] },
+            "s2-sabado-comida": { title: "Costillitas de cerdo en salsa verde con calabacitas", ingredients: ["500g costillitas de cerdo", "Salsa verde", "2 calabacitas en rodajas"], prep: ["Dora las costillitas, vierte salsa verde y calabacitas.", "Cocina a fuego lento hasta que la carne esté suave."] },
+            "s2-sabado-cena": { title: "Tostadas de chicharrón con aguacate", ingredients: ["Trozo grande de chicharrón crujiente", "Crema ácida", "Aguacate en rebanadas"], prep: ["Usa trozos firmes de chicharrón como base de tostada.", "Unta crema y coloca rebanadas de aguacate encima."] },
+            "s2-domingo-desayuno": { title: "Omelette familiar de queso, espinaca y tocino", ingredients: ["6 huevos", "Tiras de tocino doradas", "Espinacas y queso fundido"], prep: ["Dora el tocino y saltea espinacas.", "Bate los huevos, haz un omelette grande relleno de queso, tocino y espinacas."] },
+            "s2-domingo-comida": { title: "Pollo al horno con hierbas finas", ingredients: ["4 piezas de pollo", "Mantequilla derretida, orégano y tomillo", "Ensalada verde"], prep: ["Baña el pollo con mantequilla y hierbas; hornea a 200°C por 30 mins.", "Acompaña con ensalada fresca."] },
+            "s2-domingo-cena": { title: "Infusión relajante con panela", ingredients: ["Té o infusión al gusto", "Cubitos de queso panela"], prep: ["Disfruta una infusión caliente y acompaña con cubitos de queso panela."] }
+        };
 
         function switchTab(evt, tabName) {
             let contents = document.getElementsByClassName("section-content");
@@ -687,15 +732,20 @@
             evt.currentTarget.classList.add("active");
         }
 
+        function changeWeek(weekId) {
+            let weeks = document.getElementsByClassName("week-container");
+            for (let i = 0; i < weeks.length; i++) {
+                weeks[i].style.display = "none";
+            }
+            document.getElementById(weekId).style.display = "block";
+        }
+
         function openRecipe(recipeId) {
             const modal = document.getElementById("recipeModal");
             const modalBody = document.getElementById("modalBody");
-            const modalHeader = document.getElementById("modalPosterHeader");
             const recipe = recipesData[recipeId];
 
             if (recipe) {
-                modalHeader.innerHTML = latinoSvgArt;
-
                 let html = `<h2 class="modal-title">${recipe.title}</h2>`;
                 
                 html += `<div class="recipe-section-title">🛒 Ingredientes:</div><ul>`;
@@ -729,4 +779,3 @@
 
 </body>
 </html>
-
